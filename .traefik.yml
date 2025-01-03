@@ -1,12 +1,12 @@
-displayName: Demo Plugin
+displayName: Access Control Plugin
 type: middleware
-iconPath: .assets/icon.png
-
-import: github.com/traefik/plugindemo
-
-summary: '[Demo] Add Request Header'
-
+import: github.com/meafq/traefik-my-plugin
+summary: "A middleware to control access based on IP and header rules."
+iconPath: assets/icon.png
+bannerPath: assets/banner.png
 testData:
-  Headers:
-    X-Demo: test
-    X-URL: '{{URL}}'
+  disallowedIPs:
+    - "172.17.0.0/16"
+  allowedSubnet: "10.0.0.0/8"
+  requiredHeader: "X-Custom-Header"
+  requiredValue: "ExpectedValue"
